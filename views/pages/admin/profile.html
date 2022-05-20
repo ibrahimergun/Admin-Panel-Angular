@@ -1,0 +1,136 @@
+<div class="page page-orders" ng-controller="login">
+
+    <div class="pageheader">
+
+        <h2>Hesap Bilgileri</h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="app.dashboard"><i class="fa fa-home"></i> {{profileAdmin.user.first_name}} {{profileAdmin.user.last_name}}</a>
+                </li>
+                <li>
+                    <a >Hesabım </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- row -->
+    <div class="row">
+        <!-- col -->
+        <div class="col-md-6">
+
+            <!-- tile -->
+            <section class="tile" fullscreen="isFullscreen01">
+
+                <!-- tile header -->
+                <div class="tile-header dvd dvd-btm">
+                    <h1 class="custom-font"><strong>Yönetici </strong>Bilgileri</h1>
+                </div>
+                <!-- /tile header -->
+                <!-- tile body -->
+                <div class="tile-body">
+
+                    <form class="form-horizontal" name="account">
+                        <div class="form-group mt-20">
+                            <label for="photo" class="col-sm-3 control-label">Fotoğraf</label>
+                            <div class="col-sm-9">
+                                <img ngf-thumbnail="profileAdmin.photo" alt="" class="mb-10" style="width: 80px; height: 80px">
+                                <button class="btn-nostyle text-danger ml-5" ng-click="profileAdmin.photo = null" ng-show="profileAdmin.photo"><i
+                                        class="fa fa-times"></i></button>
+                                <input type="file" name="photo" id="photo" ng-model="profileAdmin.photo" ngf-select ngf-pattern="'image/*'"
+                                       accept="image/*" ngf-max-size="5MB"/>
+                                <uib-progressbar class="progress-xxs mt-10" value="profileAdmin.photo.progress" type="cyan"
+                                                 ng-show="profileAdmin.photo.progress >= 0"></uib-progressbar>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="first_name" class="col-sm-3 control-label">Adı</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="first_name" class="form-control" id="first_name" placeholder="İsim..."
+                                       ng-model="profileAdmin.user.first_name" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="last_name" class="col-sm-3 control-label">Soyadı</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Soyadı.."
+                                       ng-model="profileAdmin.user.last_name" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="email" class="form-control" id="email" placeholder="Email.."
+                                       ng-model="profileAdmin.user.email" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="country" class="col-sm-3 control-label">Cinsiyeti</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="country" class="form-control" id="country" placeholder="Cinsiyeti..."
+                                       value="{{profileAdmin.gender === 0 ? 'Erkek':'Kadın'}}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthday" class="col-sm-3 control-label">Doğum Tarihi</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="birthday" class="form-control" id="birthday" placeholder="Doğum Tarihi..."
+                                       value="{{profileAdmin.birthday | date : format : shortDate}}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthday" class="col-sm-3 control-label">Üyelik Tarihi</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="date_joined" class="form-control" id="date_joined" placeholder="Üyelik Tarihi..." value="{{profileAdmin.user.date_joined | date : format : shortDate}}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="language" class="col-sm-3 control-label">Dil</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="language" class="form-control" id="language" placeholder="Dil..." value="{{profileAdmin.language === null ? 'Belirtilmedi': profileAdmin.language}}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="col-sm-3 control-label">Telefon</label>
+                            <div class="col-sm-9">
+                                <input type="number" name="phone" class="form-control" id="phone" placeholder="Telefon..." ng-model="profileAdmin.phone"
+                                       disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="street" class="col-sm-3 control-label">Ülke</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="street" class="form-control" id="street" placeholder="Ülke..."
+                                       ng-model="profileAdmin.country" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="city" class="col-sm-3 control-label">Şehir</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="city" class="form-control" id="city" placeholder="Şehir..." ng-model="profileAdmin.city"
+                                       disabled>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /tile body -->
+                <div class="tile-footer text-right bg-tr-black lter dvd dvd-top">
+                    <!-- SUBMIT BUTTON -->
+                    <a class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" href="#!/home/dashboard"><i class="fa fa-arrow-left"></i>Geri</a>
+                    <!--<button class="btn btn-success" ng-click="saveUser(personalInfo)" ng-disabled="personalInfo.$invalid">Save</button>-->
+                </div>
+            </section>
+            <!-- /tile -->
+        </div>
+        <!-- /col -->
+    </div>
+    <!-- /row -->
+</div>

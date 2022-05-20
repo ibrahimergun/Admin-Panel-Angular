@@ -1,0 +1,217 @@
+<div class="page page-users" ng-controller="editInterpreter">
+
+    <div class="pageheader">
+
+        <h2>Yorumcu Bilgileri | {{interpreterDetail.user.first_name}} {{interpreterDetail.user.last_name}}</h2>
+
+    </div>
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- tile -->
+            <section class="tile tile-simple">
+                <!-- tile body -->
+                <div class="tile-body">
+                    <form name="form" class="form-horizontal form-validation" role="form" novalidate>
+                        <div class="form-group mt-20">
+                            <div class="col-sm-2 text-center">
+                                <aside>
+                                    <div class="thumb thumb-xl">
+                                        <img ng-src="{{interpreterDetail.profile_photo || 'assets/images/random-avatar7.jpg'}}" alt="" class="img-circle" style="width:120px;height:120px;">
+                                        <div class="form-group mt-20">
+                                            <input type="file" name="interpreterPhoto" id="interpreterPhoto" ngf-select ng-model="interpreterPhoto" ngf-pattern="'image/*'"
+                                                   accept="image/*" ngf-max-size="5MB">
+                                            <button class="btn btn-rounded-40 btn-ef btn-ef-2 btn-ef-2-success btn-ef-2a mb-10 ml-10 fa fa-file-photo-o" type="submit"  ng-click="submitPhoto()"> Yükle</button>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </div>
+                            <div class="col-sm-2 offset">
+                                <label for="ID" class="control-label">ID</label>
+                                <input type="text" ng-model="interpreterDetail.id" class="form-control underline-input" id="ID" disabled>
+                            </div>
+                            <div class="col-sm-2 offset">
+                            </div>
+                            <div class="col-sm-2 offset">
+                                <label for="Datejoin" class="control-label">Üyelik Tarihi</label>
+                                <input type="text" value="{{interpreterDetail.user.date_joined | date: 'mediumDate'}}" class="form-control underline-input" id="Datejoin" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group mt-20">
+                            <label for="first_name" class="col-sm-1 control-label">Adı</label>
+                            <div class="col-sm-4 offset">
+                                <input type="text" ng-model="interpreterDetail.user.first_name" name="first_name" class="form-control" id="first_name">
+                            </div>
+                            <label for="last_name" class="col-sm-1 control-label">Soyadı</label>
+                            <div class="col-sm-4 offset">
+                                <input type="text" ng-model="interpreterDetail.user.last_name" name="last_name" class="form-control" id="last_name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-1 control-label">Email <span class="text-danger" style="font-size: 15px;">*</span></label>
+                            <div class="col-sm-4">
+                                <input type="email" ng-model="interpreterDetail.user.email" name="email" class="form-control" id="email" disabled>
+                            </div>
+                            <label for="rating" class="col-sm-1 control-label">Skor</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="rating" ng-model="interpreterDetail.rating" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nickname" class="col-sm-1 control-label">NickName<span class="text-danger" style="font-size: 15px;">*</span></label>
+                            <div class="col-sm-4">
+                                <input type="nickname" ng-model="interpreterDetail.nickname" name="nickname" class="form-control" id="nickname">
+                            </div>
+                            <label for="IBAN" class="col-sm-1 control-label">IBAN Numarası<span class="text-danger" style="font-size: 15px;"></span></label>
+                            <div class="col-sm-4">
+                                <input type="IBAN" ng-model="interpreterDetail.iban_number" name="IBAN" class="form-control" id="IBAN">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group mt-20">
+                            <label for="country" class="col-sm-1 control-label">Ülke</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text" ng-model="interpreterDetail.country.translations[0].name " class="form-control" id="country" disabled>
+                            </div>
+                            <label for="city" class="col-sm-1 control-label">Şehir</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text" ng-model="interpreterDetail.city.name" class="form-control" id="city" disabled>
+                            </div>
+                            <label for="date" class="col-sm-1 control-label">Doğum Tarihi</label>
+                            <div class="col-sm-3 offset">
+                                <input type="text" placeholder="YYYY-AA-GG" ng-model="interpreterDetail.user.birthday" class="form-control"
+                                       pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" id="date">
+                            </div>
+                        </div>
+                        <div class="form-group mt-20">
+                            <label for="profile_description" class="col-sm-1 control-label">Kullanıcı Detayı</label>
+                            <div class="col-sm-5 offset">
+                                <textarea type="text" class="form-control" id="profile_description" rows="3" ng-model="interpreterDetail.profile_description"></textarea>
+                            </div>
+
+                            <label for="phone" class="col-sm-1 control-label">Telefon</label>
+                            <div class="col-sm-3 offset">
+                                <input type="text" placeholder="+XXXXXXXXX" ng-model="interpreterDetail.phone" class="form-control" pattern=".{9,15}"  title="9 to 15 characters" id="phone">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group mt-20">
+                            <label for="status" class="col-sm-1 control-label">Durum</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text" value="{{interpreterDetail.status === 1 ? 'Banned' : interpreterDetail.status === 2 ? 'Active' : 'null'}}" class="form-control" id="status" disabled>
+                            </div>
+                            <label for="is_customer" class="col-sm-1 control-label">Çeviri Sayısı</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text" ng-model="interpreterDetail.interpretation_count" class="form-control" id="is_customer" disabled>
+                            </div>
+                            <label for="queue_length" class="col-sm-1 control-label">Sıradaki İş</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text" ng-model="interpreterDetail.queue_length" class="form-control" id="queue_length" disabled>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="form-group mt-15 text-left">
+                            <div class="col-sm-10">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Yorum Türü</th>
+                                        <th>Kredi Miktarı</th>
+                                        <th>Türü Sil</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="credit in interpreterDetail.interpretation_prices">
+                                        <td><b>{{credit.category_type.name}}</b></td>
+                                        <td><b><i>{{credit.credit}}</i></b></td>
+                                        <td>
+                                            <button class="btn btn-danger btn-rounded btn-icon-only btn-ef btn-ef-3 btn-ef-3d mb-6"><i class="fa fa-trash" name="priceId"
+                                                                                                                                       ng-click="delInterpretation(credit.id)"></i></button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="form-group mt-20">
+                            <div class="col-sm-2 offset">
+                                <div class="col-sm-6 offset">
+                                    <label for="Date" class="control-label">Seçiniz:</label></br>
+                                    <label for="Date" class="control-label"><b>Yorum Türü:</b></label></br>
+                                    <label for="Date" class="control-label">Yeni Kredi:</label></br></br>
+                                    <label for="Date" class="control-label">Ekle/Değiştir</label></br>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 offset" id="dream">
+                                <input class="checkbox" type="checkbox" ng-model="checked"></br>
+                                <label><b>Rüya Tabiri</b></label>
+                                <input type="number" min="0" ng-disabled="!checked" class="form-control" ng-model="interpreterDetail.credit.dream"></br>
+                                <button ng-disabled="!checked || interpreterDetail.credit.dream === undefined || interpreterDetail.credit.dream === null " class="btn btn-success mb-10 pull-left"
+                                        ng-click="updateCredit(id)">Güncelle
+                                </button>
+                            </div>
+                            <div class="col-sm-2 offset">
+                                <input class="checkbox " type="checkbox" ng-model="checked1"></br>
+                                <label><b>Grafoloji</b></label>
+                                <input type="number" min="0" ng-disabled="!checked1" class="form-control" ng-model="interpreterDetail.credit.graphology"></br>
+                                <button ng-disabled="!checked1 || interpreterDetail.credit.graphology === undefined || interpreterDetail.credit.graphology === null "
+                                        class="btn btn-success mb-10 pull-left" ng-click="updateCredit1(id)">Güncelle
+                                </button>
+                            </div>
+
+                            <div class="col-sm-2 offset">
+                                <input class="checkbox " type="checkbox" ng-model="checked2"></br>
+                                <label><b>Fizyonomi</b></label>
+                                <input type="number" min="0" ng-disabled="!checked2" class="form-control" ng-model="interpreterDetail.credit.physionomy"></br>
+                                <button ng-disabled="!checked2 || interpreterDetail.credit.physionomy === undefined || interpreterDetail.credit.physionomy === null "
+                                        class="btn btn-success mb-10 pull-left" ng-click="updateCredit2(id)">Güncelle
+                                </button>
+                            </div>
+
+                            <div class="col-sm-2 offset">
+                                <input class="checkbox " type="checkbox" ng-model="checked3"></br>
+                                <label><b>Yıldızname</b></label>
+                                <input type="number" min="0" ng-disabled="!checked3" class="form-control" ng-model="interpreterDetail.credit.yildizname"></br>
+                                <button ng-disabled="!checked3 || interpreterDetail.credit.yildizname === undefined || interpreterDetail.credit.yildizname === null "
+                                        class="btn btn-success mb-10 pull-left" ng-click="updateCredit3(id)">Güncelle
+                                </button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group mt-20">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2 offset">
+                                <a href="#!/home/historyPayments/{{interpreterDetail.id}}">
+                                    <button class="btn btn-info mb-10" data-toggle="modal" data-target="#myModal" data-backdrop="static">Kazanılan Krediler</button>
+                                </a>
+                            </div>
+                            <div class="col-sm-2 offset">
+                                <a href="#!/home/interpreterPayments/{{interpreterDetail.id}}">
+                                    <button class="btn btn-warning mb-10" data-toggle="modal" data-target="#myModal" data-backdrop="static">Yapılan Ödemeler</button>
+                                </a>
+                            </div>
+                            <div class="col-sm-2 offset">
+                                <button class="btn btn-danger mb-10" ng-click="BanUser(interpreterDetail.id)">Aktif/Pasif</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-footer" style="padding: 0 100px;">
+                            <a class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ui-sref="home.interpreter"><i class="fa fa-arrow-left"></i> Cancel</a>
+                            <button class="btn btn-success b-0 pull-right" ng-disabled="form.$invalid" ng-click="updateInterpreter()">Bilgileri Güncelle</button>
+                        </div>
+
+                    </form>
+                    <!-- /tile body -->
+                </div>
+            </section>
+            <!-- /tile -->
+        </div>
+    </div>
+    <!-- /row -->
+</div>
+
+
+

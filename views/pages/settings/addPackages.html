@@ -1,0 +1,82 @@
+<div class="page page-users" ng-controller="addPackages">
+
+    <div class="pageheader">
+        <h2>Paket Ekleme Ekranı</h2>
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="/"><i class="fa fa-home"></i> ArifName</a>
+                </li>
+                <li>
+                    <a>Paket Ekle</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- tile -->
+            <section class="tile tile-simple">
+                <!-- tile body -->
+                <div class="tile-body">
+                    <form name="frm" class="form-horizontal form-validation" novalidate>
+                        <div class="form-group mt-20">
+                            <label for="amount" class="col-sm-2 control-label">Kredi Miktarı<span class="text-danger" style="font-size: 15px;">*</span></label>
+                            <div class="col-sm-6 offset">
+                                <input type="number" min="0" placeholder="Paketteki kredi miktarı..." ng-model="credit.amount" name="amount" class="form-control" id="amount" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cost" class="col-sm-2 control-label">Paket Tutarı<span class="text-danger" style="font-size: 15px;">*</span></label>
+                            <div class="col-sm-6">
+                                <input type="number" min="0" placeholder="Tahsil edilecek tutar... " ng-model="credit.cost" name="cost" class="form-control" id="cost" required>
+                            </div>
+                        </div>
+                        <div class="form-group mt-20">
+                            <label for="currency" class="col-sm-2 control-label">Türü<span class="text-danger" style="font-size: 15px;">*</span></label>
+                            <div class="col-sm-6">
+                                <select chosen="{width: '100%'}" ng-model="credit.currency" name="currency" class="form-control" id="currency"
+                                        required>
+                                    <option>usd</option>
+                                    <option>try</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="codename" class="col-sm-2 control-label">Paket Kodu<span class="text-danger" style="font-size: 15px;">*</span></label>
+                            <div class="col-sm-6">
+                                <input type="text" placeholder="Paketin Kodu... " ng-model="credit.codename" name="codename" class="form-control" id="codename" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="status" class="col-sm-2 control-label">Aktif/Pasif<span class="text-danger" style="font-size: 15px;">*</span></label>
+                            <div class="col-sm-6">
+                                <select chosen="{width: '100%'}" ng-model="credit.status" name="status" class="form-control" id="status"
+                                        required>
+                                    <option >Aktif</option>
+                                    <option>Pasif</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="text-align: right"><b><span class="text-danger" style="font-size: 15px;">*</span><i><span>  Zorunlu Alanlar</span></i></b></div>
+                        <hr>
+                        <div class="form-footer" style="padding: 0 100px;">
+                            <a >
+                                <button class="btn btn-success b-0 pull-right" ng-disabled="frm.$invalid " ng-click="addPackages()">Submit</button>
+                            </a>
+                            <a class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" href="#!/home/creditPackages"><i class="fa fa-arrow-left"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- /tile body -->
+            </section>
+            <!-- /tile -->
+        </div>
+    </div>
+    <!-- /row -->
+</div>
+
+

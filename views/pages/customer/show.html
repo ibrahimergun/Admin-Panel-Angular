@@ -1,0 +1,50 @@
+<div class="page page-users" ng-controller="customerCTRL">
+
+    <div class="pageheader">
+
+        <h2>{{customerDetail.user.first_name || customerDetail.user.email}}</h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="home.dashboard"><i class="fa fa-home"></i> CuzAdmin</a>
+                </li>
+                <li>
+                    <a>Manage Users</a>
+                </li>
+                <li>
+                    <a>{{customerDetail.user.first_name || customerDetail.user.email}}</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- tile -->
+            <section class="tile tile-simple">
+                <!-- tile body -->
+                <div class="tile-body">
+                    <ul class="list-unstyled m-20">
+                        <li><strong>Name:</strong> {{customerDetail.user.first_name}}</li>
+                        <li><strong>Email:</strong> {{customerDetail.user.email}}</li>
+                        <li><strong>Role:</strong> {{customerDetail.gender === 0 ? 'Male':'Female'}}</li>
+                        <li><strong>Member Date:</strong> {{customerDetail.user.date_joined}}</li>
+                    </ul>
+                    <div class="form-footer">
+                        <button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ui-sref="home.customer"><i class="fa fa-arrow-left"></i> Back</button>
+                    </div>
+                </div>
+                <!-- /tile body -->
+            </section>
+            <!-- /tile -->
+        </div>
+    </div>
+    <!-- /row -->
+</div>
+
+

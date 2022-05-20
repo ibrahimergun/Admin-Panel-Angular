@@ -1,0 +1,146 @@
+<div class="page page-users" ng-controller="editCustomer">
+
+    <div class="pageheader">
+
+        <h2>Kullanıcı Bilgileri | {{customerDetail.customer.user.first_name}} {{customerDetail.customer.user.last_name}}</h2>
+
+    </div>
+    <!-- row -->
+    <div class="row">
+
+        <div class="col-md-12">
+            <!-- tile -->
+            <section class="tile tile-simple">
+
+                <!-- tile body -->
+                <div class="tile-body">
+
+                    <form name="form" class="form-horizontal form-validation" role="form">
+
+
+                        <div class="form-group mt-20">
+
+                            <div class="col-sm-2 text-center">
+                                <aside>
+                                    <div class="thumb thumb-xl">
+                                        <img ng-src="{{customerDetail.customer.profile_photo || 'assets/images/random-avatar7.jpg'}}" alt="" class="img-circle" style="width:120px;height:120px;">
+                                    </div>
+                                </aside>
+                            </div>
+
+                            <div class="col-sm-2 offset">
+                                <label for="ID" class="control-label">ID</label>
+                                <input type="text" ng-model="customerDetail.customer.id" class="form-control underline-input" id="ID" disabled>
+                            </div>
+                            <div class="col-sm-2 offset">
+
+                            </div>
+                            <div class="col-sm-2 offset">
+                                <label for="Date" class="control-label">Üyelik Tarihi</label>
+                                <input type="text" value="{{customerDetail.customer.user.date_joined | UTCToNow: 'DD-MM-YY HH:mm'}}"  class="form-control underline-input" id="Date" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-20">
+                            <label for="first_name" class="col-sm-1 control-label">Adı</label>
+                            <div class="col-sm-4 offset">
+                                <input type="text" ng-model="customerDetail.customer.user.first_name" name="first_name" class="form-control" id="first_name" disabled>
+                            </div>
+                            <label for="last_name" class="col-sm-1 control-label">Soyadı</label>
+                            <div class="col-sm-4 offset">
+                                <input type="text" ng-model="customerDetail.customer.user.last_name" name="last_name" class="form-control" id="last_name" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-1 control-label">Email <span class="text-danger" style="font-size: 15px;">*</span></label>
+                            <div class="col-sm-4">
+                                <input type="email" ng-model="customerDetail.customer.user.email" name="email" class="form-control" id="email" disabled>
+                            </div>
+                            <label for="gender" class="col-sm-1 control-label">Cinsiyeti</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="gender" value="{{customerDetail.customer.gender === 1 ? 'Erkek': customerDetail.customer.gender === 2 ? 'Kadın' : 'Belirtilmemiş'}}" disabled>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group mt-20">
+                            <label for="country" class="col-sm-1 control-label">Ülke</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text" ng-model="customerDetail.customer.country.translations[0].name" class="form-control" id="country" disabled>
+                            </div>
+                            <label for="city" class="col-sm-1 control-label">Şehir</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text" ng-model="customerDetail.customer.city.name" class="form-control" id="city" disabled>
+                            </div>
+                            <label for="birthday" class="col-sm-1 control-label">Doğum Tarihi</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text"  value="{{customerDetail.customer.user.birthday | date: 'mediumDate'}}" class="form-control" id="birthday" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-20">
+                            <label for="customer_type" class="col-sm-1 control-label">Müşteri Türü</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text" class="form-control" id="customer_type"
+                                       value="{{customerDetail.customer.customer_type === 1 ? 'Regular':customerDetail.customer.customer_type === 2 ? 'Silver':customerDetail.customer.customer_type === 3 ? 'Gold':customerDetail.customer.customer_type === 4 ? 'Premium' : 'null'}}"
+                                       disabled>
+                            </div>
+                            <label for="relationship" class="col-sm-1 control-label">Medeni Durumu</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text"
+                                      value="{{customerDetail.customer.relationship === 1 ? 'Bekar' : customerDetail.customer.relationship === 2 ? 'Evli' : customerDetail.customer.relationship === 3 ? 'İlişkisi var' : 'Belirtilmemiş'}}"
+                                       class="form-control" id="relationship" disabled>
+                            </div>
+                            <label for="phone" class="col-sm-1 control-label">Telefon</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text" ng-model="customerDetail.customer.phone" class="form-control" id="phone" disabled>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group mt-20">
+                            <label for="status" class="col-sm-1 control-label">Durum</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text" value="{{customerDetail.customer.status === 1 ? 'Banned' : customerDetail.customer.status === 2 ? 'Active' : 'Yok'}}" class="form-control"
+                                       id="status" disabled>
+                            </div>
+                            <label for="remaining_credit" class="col-sm-1 control-label">Kalan Kredi</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text" ng-model="customerDetail.customer.remaining_credit"   class="form-control" id="remaining_credit" disabled>
+                            </div>
+                            <label for="total_credit" class="col-sm-1 control-label">Toplam Kredi</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text" ng-model="customerDetail.customer.total_credit" class="form-control" id="total_credit" disabled>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="form-group mt-20">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2 offset">
+                                <a href="#!/home/customerPurchases/{{customerDetail.customer.id}}"><button class="btn btn-info mb-10" data-toggle="modal" data-target="#myModal" data-backdrop="static" >Satın Alma Geçmişi</button></a>
+                            </div>
+                            <div class="col-sm-2 offset">
+                                <a href="#!/home/customerPayments/{{customerDetail.customer.id}}"><button class="btn btn-warning mb-10" data-toggle="modal" data-target="#myModal" data-backdrop="static" >Harcama Geçmişi</button></a>
+                            </div>
+                            <div class="col-sm-2 offset">
+                                <button class="btn btn-danger mb-10" ng-click="BanUser(customerDetail.customer.id)">Aktif/Pasif</button>
+                            </div>
+
+
+                        </div>
+                        <hr>
+                        <div class="form-footer" style="padding: 0 100px;">
+                        <!--<button class="btn btn-success b-0 pull-right" ng-click="update()">Güncelle</button>-->
+                            <a class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ui-sref="home.customer"><i class="fa fa-arrow-left"></i> Geri</a>
+                        </div>
+                    </form>
+                </div>
+                <!-- /tile body -->
+            </section>
+            <!-- /tile -->
+        </div>
+    </div>
+    <!-- /row -->
+</div>
+
+
+

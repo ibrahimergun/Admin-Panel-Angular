@@ -1,0 +1,243 @@
+<div class="page page-users" ng-controller="editInterpretations" xmlns="http://www.w3.org/1999/html">
+
+    <div class="pageheader">
+
+        <h2>Yorum Detayları | {{interpretationsDetail.interpretation.category.category_type.name}}</h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="home.dashboard"><i class="fa fa-home"></i> ArifName</a>
+                </li>
+                <li>
+                    <a>{{interpretationsDetail.interpretation.category.category_type.name}}</a>
+                </li>
+                <li>
+                    <a>Yorum Detayları</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- row -->
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <!-- tile -->
+            <section class="tile tile-simple">
+
+                <!-- tile body -->
+                <div class="tile-body">
+
+                    <form name="form" class="form-horizontal form-validation" role="form" novalidate>
+                        <div class="form-group mt-20">
+                            <label for="ID" class="control-label col-sm-1">ID</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text" ng-model="interpretationsDetail.interpretation.id" class="form-control underline-input"
+                                       id="ID" disabled>
+                            </div>
+
+                            <label for="jobStatus" class="control-label col-sm-3">Durumu</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text"
+                                       value=' {{interpretationsDetail.interpretation.status === 0 ? "Yok": interpretationsDetail.interpretation.status === 1 ? "Onay Bekleniyor" : interpretationsDetail.interpretation.status=== 2 ? "Sırada" : interpretationsDetail.interpretation.status === 3 ? "İşleme alındı" : interpretationsDetail.interpretation.status === 4 ? "Yorumlanıyor" : "Tamamlandı";}} '
+                                       class="form-control underline-input"
+                                       id="jobStatus" disabled>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group mt-20">
+                            <label for="title" class="control-label col-sm-1">Yorumlama Türü</label>
+                            <div class="col-sm-4 offset">
+                                <input type="text" name="title" class="form-control" id="title"
+                                       ng-model="interpretationsDetail.interpretation.category.category_type.name" disabled="">
+                            </div>
+                            <label for="Format" class="control-label col-sm-1">Formatı</label>
+                            <div class="col-sm-2 offset">
+                                <input type="text" name="Format" class="form-control underline-input" id="Format"
+                                       ng-disabled="true"
+                                       value='{{interpretationsDetail.interpretation.category.request_type === 0 ? "Belirtilmemiş": interpretationsDetail.interpretation.category.request_type === 1 ? "Sesli": interpretationsDetail.interpretation.category.request_type === 2 ? "Yazılı" : "Fotoğraf";}}'
+                                       disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-20">
+                            <label for="is_read" class="control-label col-sm-1">Okundu Bilgisi</label>
+                            <div class="col-sm-4 offset">
+                                <input type="text" class="form-control" id="is_read"
+                                       value='{{interpretationsDetail.interpretation.is_read === true ? "Okundu" : "Okunmadı"; }}' disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-20">
+                            <label for="customer" class="col-sm-1 control-label">Müşteri</label>
+                            <div class="col-sm-4">
+                                <input type="text" name="customer" class="form-control" id="customer"
+                                       ng-model="interpretationsDetail.interpretation.customer.user.email" disabled>
+                            </div>
+
+                            <label for="interpreter" class="col-sm-1 control-label">Yorumcu</label>
+                            <div class="col-sm-4">
+                                <input type="text" name="interpreter" class="form-control" id="interpreter"
+                                       ng-model="interpretationsDetail.interpretation.interpreter.user.email" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group mt-20">
+                            <label for="statusInterpreter" class="control-label col-sm-1">Yorumcu Durumu</label>
+                            <div class="col-sm-4 offset">
+                                <input type="text" class="form-control" id="statusInterpreter"
+                                       value="{{interpretationsDetail.interpretation.interpreter.status === 1 ? 'Banned' : interpretationsDetail.interpretation.interpreter.status === 2 ? 'Active' : 'Belirsiz';}}" disabled>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group mt-20">
+                            <label for="requestDate" class="col-sm-1 control-label">Talep Tarihi</label>
+                            <div class="col-sm-4">
+                                <input id="requestDate" value="{{interpretationsDetail.interpretation.request_date | UTCToNow: 'DD-MM-YY HH:mm' }}"
+                                       class="form-control underline-input" disabled>
+                            </div>
+                            <label for="responseDate" class="col-sm-1 control-label" disabled>Cevap Tarihi</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control underline-input" id="responseDate"
+                                       value='{{interpretationsDetail.interpretation.response_date | UTCToNow: "DD-MM-YY HH:mm"}}' disabled>
+                            </div>
+                        </div>
+                        <div class="form-group mt-20">
+                            <label for="is_granted" class="col-sm-1 control-label">Okundu Bilgisi</label>
+                            <div class="col-sm-4">
+                                <input chosen="{width: '100%'}" name="status" class="form-control" id="is_granted"
+                                       value='{{interpretationsDetail.interpretation.is_read === true ? "Okundu" : "Okunmadı";}} ' disabled>
+                            </div>
+
+                            <label for="is_in_progress" class="col-sm-1 control-label">Durumu</label>
+                            <div class="col-sm-4">
+                                <input chosen="{width: '100%'}" name="status" class="form-control" id="is_in_progress"
+                                       value='{{interpretationsDetail.interpretation.status === 0 ? "Yok": interpretationsDetail.interpretation.status === 1 ? "Onay Bekleniyor" : interpretationsDetail.interpretation.status=== 2 ? "Sırada" : interpretationsDetail.interpretation.status === 3 ? "İşleme alındı" : interpretationsDetail.interpretation.status === 4 ? "Yorumlanıyor" : "Tamamlandı";}}'
+                                       disabled>
+                            </div>
+                        </div>
+                        <hr>
+                        <section class="tile">
+                            <!-- tile header -->
+                            <div class="tile-header dvd dvd-btm">
+                                <h1 style="cursor: pointer" class="custom-font" data-toggle="collapse" href="#collapseExample"><strong> Translator
+                                    Details </strong></h1>
+                            </div>
+                            <!-- /tile header -->
+                            <!-- tile body -->
+                            <div class="tile-body">
+                                <div class="collapse" id="collapseExample">
+                                    <h4>Müşteri Talebi</h4>
+                                    <div class="form-group mt-20 text-left">
+                                        <div class="col-sm-12">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th class="col-sm-1">Talep Türü</th>
+                                                    <th class="col-sm-6">İçerik</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td><i>{{interpretationsDetail.interpretation.category.request_type === 0 ? "Belirtilmemiş":
+                                                        interpretationsDetail.interpretation.category.request_type === 1 ? "Sesli":
+                                                        interpretationsDetail.interpretation.category.request_type === 2 ? "Yazılı" :
+                                                        "Fotoğraf";}}</i></td>
+                                                    <td><strong>{{interpretationsDetail.interpretation.category.request_content  === null ? "Yorum text formatında olmadığı için aşağıdaki button yardımıyla görüntüleyebilirsiniz." :
+                                                        interpretationsDetail.interpretation.category.request_content ;}}</strong></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <h4>Yorumcu Cevabı</h4>
+                                    <div class="form-group mt-20 text-left">
+                                        <div class="col-sm-12">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th class="col-sm-1">Cevap Türü</th>
+                                                    <th class="col-sm-6">İçerik</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td><i>{{interpretationsDetail.interpretation.response_type === 4 ? "Farketmez":
+                                                        interpretationsDetail.interpretation.response_type === 1 ? "Sesli":
+                                                        interpretationsDetail.interpretation.response_type === 2 ? "Yazılı" : "Belirtilmemiş";}}</i>
+                                                    </td>
+                                                    <td><strong>{{interpretationsDetail.interpretation.response_date === null ? "Henüz cevap verilmemiş" :
+                                                        interpretationsDetail.interpretation.response_date !== null &&
+                                                        interpretationsDetail.interpretation.response_file !== null ? "Cevap text formatında olmadığı için aşağıdaki button yardımıyla görüntüleyebilirsiniz." :
+                                                        interpretationsDetail.interpretation.response_content ;}}</strong></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <h5><b>Kullanıcı Mesajları
+                                        <div class="form-group mt-20 text-left">
+                                            <div class="col-sm-12">
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="col-sm-1">Mesaj Tarihi</th>
+                                                        <th class="col-sm-6">Mesaj İçeriği</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr ng-repeat="messages in interpretationsDetail.interpretation.messages">
+                                                        <td>{{messages.send_date | UTCToNow: 'DD-MM-YY HH:mm'}}</td>
+                                                        <td><b><i>{{messages.content}}</i></b></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </h5>
+                                    <hr>
+                                    <div class="form-group mt-20">
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-4" >
+                                            <label class="control-label"><b>Müşteri Dokumanları</b></label><br><br>
+                                            <div ng-repeat="files in interpretationsDetail.interpretation.category.request_file.files">
+                                                <a ng-href="{{files.file_url}}" target="_blank" class="btn btn-blue" >Dökümanı Görüntüle
+                                                    <i class="fa fa-download"></i></a><br><br>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="control-label"><b>Yorumcu Dökümanları</b></label><br><br>
+                                            <div ng-repeat="files in interpretationsDetail.interpretation.response_file.files">
+                                            <a ng-href="{{files.file_url}}" target="_blank" class="btn btn-blue" >Cevabı Görüntüle
+                                                <i class="fa fa-download"></i> </a><br><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- /tile body -->
+                        </section>
+                        <div class="form-footer" style="padding: 0 100px;">
+                            <button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ui-sref="home.interpretations"><i
+                                    class="fa fa-arrow-left"></i> Geri
+                            </button>
+                        </div>
+                    </form>
+                </div>               <!-- /tile body -->
+            </section>            <!-- /tile -->
+        </div>
+    </div>
+    <!-- /row -->
+</div>
+
+
+
+

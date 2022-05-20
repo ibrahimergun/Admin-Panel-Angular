@@ -1,0 +1,63 @@
+<div class="page page-settings" ng-controller="settingCredit">
+
+  <div class="pageheader">
+
+    <h2>Ayarlar</h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="home.dashboard"><i class="fa fa-home"></i> ArifName</a>
+        </li>
+        <li>
+          <a ui-sref="home.settings">Ayarlar</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="pagecontent">
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-6">
+        <!-- tile -->
+        <section class="tile">
+
+          <!-- tile header -->
+          <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>Kredi</strong> Değerleri</h1>
+          </div>
+          <!-- /tile header -->
+          <!-- tile body -->
+          <div class="tile-body">
+            <form name="settingsForm" class="form form-horizontal">
+              <div class="form-group">
+                <label for="creditType" class="col-sm-2 control-label">Kredi Türü <span class="text-danger" style="font-size: 15px;">*</span></label>
+                <div class="col-sm-9">
+                  <select chosen="{width: '100%'}" name="creditType" class="form-control" id="creditType">
+                    <option value="usd" selected> USD </option>
+                    <option value="try"> TRY </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="val" class="col-sm-2 control-label">Kredi Değeri <span class="text-danger" style="font-size: 15px;">*</span></label>
+                <div class="col-sm-9">
+                  <input type="number" name="val" class="form-control" id="val" placeholder="Kredi Değeri Giriniz..." ng-model="settings.creditValue" required>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- /tile body -->
+          <div class="tile-footer text-right bg-tr-black lter dvd dvd-top">
+            <a class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ui-sref="home.dashboard"><i class="fa fa-arrow-left"></i> Geri</a>
+            <button class="btn btn-success btn-ef btn-ef-4 btn-ef-4c" ng-disabled="settingsForm.$invalid" ng-click="updateSettingCredit()">Güncelle</button>
+          </div>
+        </section>
+        <!-- /tile -->
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+</div>
+

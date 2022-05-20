@@ -1,0 +1,32 @@
+<div class="page page-core page-login" ng-controller="login">
+
+    <div class="text-center"><h3 class="text-light text-white"><span class="text-lightred">ARİF</span>NAME</h3></div>
+
+    <div class="container w-420 p-15 bg-white mt-40 text-center">
+        <h2 class="text-light text-greensea">Giriş</h2>
+        <form name="loginForm" class="form-validation mt-20" role="form" novalidate>
+            <div class="form-group">
+                <input type="email" class="form-control underline-input" placeholder="email" ng-model="email" name="email" ng-minlength="3"  required>
+                <p class="help-block text-left">
+                    <span ng-show="loginForm.email.$invalid && !loginForm.email.$pristine">Email gerekli.</span>
+                    <span ng-show="loginForm.email.$error.minlength">Email çok kısa.</span>
+                </p>
+            </div>
+            <div class="form-group" >
+                <input type="password" placeholder="Password" class="form-control underline-input" ng-model="password" name="password"  ng-minlength="4" required>
+                <p class="help-block text-left">
+                    <span ng-show="loginForm.password.$invalid && !loginForm.password.$pristine">Şifre gerekli.</span>
+                    <span ng-show="loginForm.password.$error.minlength">Şifre çok kısa.</span>
+                </p>
+            </div>
+            <div class="form-group text-left mt-20">
+                <button type="submit" class="btn btn-primary b-0 br-2 mr-5" ng-disabled="loginForm.$invalid || password.length === 0" ng-click="loginAdmin()">Login</button>
+                <!--<label class="checkbox checkbox-custom-alt checkbox-custom-sm inline-block">
+                    <input type="checkbox" ng-model="rememberMe" ng-true-value="default" ng-false-value="none"><i></i> Remember me
+                </label>-->
+             <!--<a href="forgotpass.html" class="pull-right mt-10">Forgot Password?</a>-->
+            </div>
+        </form>
+        <hr class="b-3x">
+    </div>
+</div>

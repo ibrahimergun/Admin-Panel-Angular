@@ -1,0 +1,73 @@
+<div class="page page-users" ng-controller="updatePayments">
+
+    <div class="pageheader">
+        <h2>Ödeme Ekleme Ekranı</h2>
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="/"><i class="fa fa-home"></i> ArifName</a>
+                </li>
+                <li>
+                    <a>Ödeme Ekle</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- tile -->
+            <section class="tile tile-simple">
+                <!-- tile body -->
+                <div class="tile-body">
+                    <form name="frm" class="form-horizontal form-validation" novalidate>
+                        <div class="form-group mt-20">
+                            <label for="ID" class="col-sm-2 control-label">Müşteri NO<span class="text-danger" style="font-size: 15px;">*</span></label>
+                            <div class="col-sm-6 offset">
+                                <input type="text" value="{{ID}}" name="ID" class="form-control" id="ID" required disabled>
+                            </div>
+                        </div>
+                        <div class="form-group mt-20">
+                            <label for="interpretation" class="col-sm-2 control-label">Yorum ID<span class="text-danger" style="font-size: 15px;">*</span></label>
+                            <div class="col-sm-6 offset">
+                                <input type="number" min="0" placeholder="Ödemesi geçmeyen yorum ID" ng-model="payments.interpretation" name="interpretation" class="form-control" id="interpretation" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reason" class="col-sm-2 control-label">Ödeme Nedeni<span class="text-danger" style="font-size: 15px;">*</span></label>
+                            <div class="col-sm-6">
+                                <input type="text" placeholder="Neden ödeme yapılıyor" ng-model="payments.reason" name="reason" class="form-control" id="reason" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Kredi Miktarı <span class="text-danger" style="font-size: 15px;">*</span></label>
+                            <div class="col-sm-6">
+                                <input type="number" min="0" placeholder="Yorumcuya aktarılması gereken kredi" name="admin_password" ng-model="admin_password" class="form-control" ng-required="confirm_password && !admin_password" password-verify="confirm_pasword">
+                                <div ng-show="frm.admin_password.$error.passwordVerify">Miktarlar uyuşmuyor!!!</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label">Kredi Miktarı<span class="text-danger" style="font-size: 15px;">*</span></label>
+                            <div class="col-sm-6">
+                                <input type="number" min="0" placeholder="Yorumcuya aktarılması gereken kredi" name="confirm_password" ng-model="confirm_password"  class="form-control" ng-required="admin_password && !confirm_password" password-verify="admin_password">
+                                <div ng-show="frm.confirm_password.$error.passwordVerify">Miktarlar uyuşmuyor!!!</div>
+                            </div>
+                        </div>
+                        <div style="text-align: right"><b><span class="text-danger" style="font-size: 15px;">*</span><i><span>  Zorunlu Alanlar</span></i></b></div>
+                        <hr>
+                        <div class="form-footer" style="padding: 0 100px;">
+                            <a href="#!/home/customerPayments/{{ID}}"><button class="btn btn-success b-0 pull-right" ng-disabled="frm.$invalid || admin_password.length === 0" ng-click="addPayments()">Submit</button></a>
+                            <a class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" href="#!/home/customerPayments/{{ID}}"><i class="fa fa-arrow-left"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+                <!-- /tile body -->
+            </section>
+            <!-- /tile -->
+        </div>
+    </div>
+    <!-- /row -->
+</div>
+
+

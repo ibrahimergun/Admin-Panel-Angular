@@ -1,0 +1,52 @@
+<section id="header" ng-controller="login">
+    <header class="clearfix">
+
+        <!-- Branding -->
+        <div class="branding">
+            <a class="brand" ui-sref="home.dashboard">
+                <span><strong>ARİF</strong>NAME</span>
+            </a>
+            <a role="button" tabindex="0" class="offcanvas-toggle visible-xs-inline"><i class="fa fa-bars"></i></a>
+        </div>
+        <!-- Branding end -->
+
+        <!-- Left-side navigation -->
+
+        <!-- Left-side navigation end -->
+
+        <!-- Right-side navigation -->
+        <ul class="nav-right pull-right list-inline">
+
+            <li class="dropdown nav-profile">
+
+                <a href class="dropdown-toggle" data-toggle="dropdown">
+                    <img ng-src="{{profileAdmin.profile_photo ||  'assets/images/profile-photo.jpg'}}"  class="img-circle size-30x30">
+                    <span>{{profileAdmin.user.first_name}} {{profileAdmin.user.last_name}} <i class="fa fa-angle-down"></i></span>
+                </a>
+
+                <ul class="dropdown-menu animated littleFadeInRight" role="menu">
+
+                    <li>
+                        <a role="button" tabindex="0">
+                            <span class="badge bg-greensea pull-right"></span>
+                            <a href="#!/home/adminProfile/{{profileAdmin.id}}" class="fa fa-user" style="margin-right: 10px;cursor: pointer;" ><span>&nbsp Profil</span></a>
+                        </a>
+                    </li>
+                    <li>
+                        <a role="button" tabindex="0" ng-click="Logout()">
+                            <i class="fa fa-sign-out"></i>Çıkış
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li class="toggle-right-sidebar">
+
+            </li>
+        </ul>
+        <!-- Right-side navigation end -->
+    </header>
+
+</section>

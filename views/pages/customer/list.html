@@ -1,0 +1,127 @@
+<div class="page page-users" ng-controller="customerCTRL">
+    <div class="pageheader">
+
+        <h2>Müşteriler</h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="home.dashboard"><i class="fa fa-home"></i> ArifName</a>
+                </li>
+                <li>
+                    <a>Müşteri Listesi</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- tile -->
+            <section class="tile" fullscreen="isFullscreen01">
+                <!-- tile header -->
+                <div class="tile-header dvd dvd-btm">
+                    <h1 class="custom-font"><strong>Kullanıcı </strong>Listesi</h1>
+                    <ul class="controls">
+                    </ul>
+                    <div class="btn-group mb-5">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true" ng-click="exportExcel()">
+                            Export <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li excel-export export-data="exportData" file-name="{{fileName}}"><a>Excel</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /tile header -->
+                <!-- tile body -->
+                <div class="tile-body">
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <input type="text" name="frm_search" class="form-control" placeholder="Search..." ng-keyup="$event.keyCode == 13 ? model.search() : null" ng-model="model.searchData">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-default" ng-click="model.search()" type="button">Search!</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+
+                        <div class="table-responsive" id="exportCustomers">
+                            <table ng-table="tableParams" class="table table-custom" template-pagination="custom/pager">
+
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Adı Soyadı</th>
+                                    <th>Email</th>
+                                    <th>Tel</th>
+                                    <th>Cinsiyet</th>
+                                    <th>Durum</th>
+                                    <th>Tarih</th>
+                                    <th>Detay</th>
+                                </tr>
+                                <tr ng-repeat="customer in model.data | filter: model.searchData">
+                                    <td>
+                                        {{customer.id}}
+                                    </td>
+
+                                    <td>
+                                        {{customer.user.first_name}} {{customer.user.last_name}}
+                                    </td>
+
+                                    <td>
+                                        <a href="mailto:{{customer.user.email}}" target="_top">{{customer.user.email}}</a>
+                                    </td>
+
+                                    <td>
+                                        {{customer.phone === null ? "Girilmedi": customer.phone}}
+                                    </td>
+
+                                    <td>
+                                        {{customer.gender === 1 ? "Erkek": interpreterDetail.iban_number === 2 ? "Kadın": "Belirtilmemiş"}}
+                                    </td>
+                                    <td>
+                                        {{customer.status === 0 ? "Yok": customer.status === 1 ? "Pasif" : "Aktif"; }}
+                                    </td>
+                                    <td>
+                                        {{customer.user.date_joined | date: "mediumDate" }}
+                                    </td>
+                                    <td data-title="'Actions'" class="actions">
+                                        <a href="#!/home/customerEdit/{{customer.id}}" class="btn-nostyle edit" style="margin-right: 10px;cursor: pointer;"><span>Details</span></a>
+                                        <!--angular 1.6 dan önce link için # di 1.6 dan sonra #! oldu      -->
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /tile body -->
+                </div>
+            </section>
+
+            <!-- /tile -->
+
+            <!--Pagination-->
+            <div class="row text-right" style="padding-right: 13px;">
+                <nav>
+                    <ul class="pagination pagination">
+                        <li ng-class="{disabled: model.isFirstPage()}"><a href ng-click="model.setPage(1)" title="First Page"> &laquo; </a></li>
+                        <li ng-class="{disabled: model.isFirstPage()}"><a href ng-click="model.previousPage()" title="Back Page">Geri</a></li>
+                        <li ng-repeat="page in model.range()" ng-class="{active: model.isCurrentPage(page)}" ng-click="model.setPage(page)" ng-if="model.isInRange(page)"><a style="cursor: pointer">{{page}}</a>
+                        </li>
+                        <li><a href ng-click="model.pagePrompt()" title="Next Page" ng-if="model.shouldShowJumpPage()">Page...</a></li>
+                        <li ng-class="{disabled: model.isLastPage()}"><a href ng-click="model.nextPage()" title="Next Page">İleri</a></li>
+                        <li ng-class="{disabled: model.isLastPage()}"><a href ng-click="model.setLastPage()" title="Last Page"> &raquo; </a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- /row -->
+
+</div>
+
+

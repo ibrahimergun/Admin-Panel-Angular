@@ -1,0 +1,113 @@
+<div class="page page-users" ng-controller="showcreditPackages">
+
+    <div class="pageheader">
+
+        <h2>Kredi Paketleri</h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="home.dashboard"><i class="fa fa-home"></i> ArifName</a>
+                </li>
+                <li>
+                    <a>Kredi Paketleri</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- tile -->
+            <section class="tile" fullscreen="isFullscreen01">
+
+                <div class="tile-header dvd dvd-btm">
+                    <h1 class="custom-font"><strong>Paket </strong>Detayları</h1>
+                    <ul class="controls">
+                        <li>
+                            <a ui-sref="home.addPackages" class="btn-nostyle"> <i class="fa fa-plus mr-5"></i>Paket Ekle</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /tile header -->
+
+                <!-- tile body -->
+                <div class="tile-body" >
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table ng-table="tableParams" class="table table-custom" template-pagination="custom/pager" >
+                            <tr>
+                                <th>Paket ID</th>
+                                <th>Kredi Miktarı</th>
+                                <th>Tutarı</th>
+                                <th>Türü</th>
+                                <th>Kodu</th>
+                                <th>Durum</th>
+                                <th>Paketi Sil</th>
+                            </tr>
+
+                            <tr ng-repeat="packages in model.data ">
+                                <td>
+                                    <a>{{packages.id}}</a>
+                                </td>
+                                <td>
+                                    <b>{{packages.amount}}</b>
+                                </td>
+                                <td>
+                                    <a>{{packages.cost}}</a>
+                                </td>
+                                <td>
+                                    <a>{{packages.currency}}</a>
+                                </td>
+                                <td>
+                                    <a>{{packages.codename}}</a>
+                                </td>
+                                <td>
+                                    <a>{{packages.is_active === true ? "Aktif" : "Pasif"}}</a>
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger btn-rounded btn-icon-only btn-ef btn-ef-3 btn-ef-3d mb-4"><i class="fa fa-trash" name="priceId" ng-click="delPackages(packages.id)"></i></button>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div>
+                            <a ui-sref="home.dashboard" class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c "><i class="fa fa-arrow-left"></i> Cancel</a>
+                            <div style="text-align: right"><b><span class="text-danger" style="font-size: 15px;">*</span><i><span>MARKETLERE TANIMLAMASI YAPILMADAN EKLENEN PAKETLER SATIN ALINAMAYACATIR!!!</span></i></b></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /tile body -->
+            </section>
+            <!-- /tile -->
+            <!--<div class="row text-right" style="padding-right: 13px;">-->
+                <!--<nav>-->
+                    <!--<ul class="pagination pagination">-->
+                        <!--<li ng-class="{disabled: model.isFirstPage()}"><a href ng-click="model.setPage(1)" title="First Page"> &laquo; </a></li>-->
+                        <!--<li ng-class="{disabled: model.isFirstPage()}"><a href ng-click="model.previousPage()" title="Back Page">Geri</a></li>-->
+                        <!--<li ng-repeat="page in model.range()" ng-class="{active: model.isCurrentPage(page)}" ng-click="model.setPage(page)" ng-if="model.isInRange(page)"><a style="cursor: pointer">{{page}}</a>-->
+                        <!--</li>-->
+                        <!--<li><a href ng-click="model.pagePrompt()" title="Next Page" ng-if="model.shouldShowJumpPage()">Page...</a></li>-->
+                        <!--<li ng-class="{disabled: model.isLastPage()}"><a href ng-click="model.nextPage()" title="Next Page">İleri</a></li>-->
+                        <!--<li ng-class="{disabled: model.isLastPage()}"><a href ng-click="model.setLastPage()" title="Last Page"> &raquo; </a></li>-->
+                    <!--</ul>-->
+                <!--</nav>-->
+            <!--</div>-->
+
+        </div>
+
+
+    </div>
+    <!-- /row -->
+
+
+</div>
+
+

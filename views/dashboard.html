@@ -1,0 +1,265 @@
+<div class="page page-dashboard" ng-controller="ctrlDashboard">
+    <div class="pageheader">
+        <h2>AnaMenü <b><span>Yönetici Sayfasına Hosgeldiniz!!!</span></b></h2>
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="home.dashboard"><i class="fa fa-home"></i> ArifName</a>
+                </li>
+                <li>
+                    <a ui-sref="home.dashboard">AnaMenü</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-greensea">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <i class="fa fa-users fa-4x"></i>
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">{{dashboard.customer_count}}</p>
+                            <span>Üyeler</span>
+                        </div>
+                        <!-- /col -->
+                    </div>
+                    <!-- /row -->
+
+                </div>
+                <div class="back bg-greensea">
+                    <div class="row vertical-center-row">
+                        <div class="text-center col-md-4 col-md-offset-4">
+                            <a href="javascript:;" ui-sref="home.customer"><i class="fa fa-chain-broken fa-2x"></i>Üye Listesi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-lightred">
+                    <!-- row -->
+                    <div class="row">
+                        <!-- col -->
+                        <div class="col-xs-4">
+                            <i class="fa fa-users fa-4x"></i>
+                        </div>
+                        <!-- /col -->
+                        <!-- col -->
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">{{"&nbsp;&nbsp;" + dashboard.interpreter_count}}</p>
+                            <span>Yorumcular</span>
+                        </div>
+                        <!-- /col -->
+                    </div>
+                    <!-- /row -->
+
+                </div>
+                <div class="back bg-lightred">
+
+                    <!-- row -->
+                    <div class="row vertical-center-row">
+                        <div class="text-center col-md-4 col-md-offset-4">
+                            <a href="javascript:;" ui-sref="home.interpreter"><i class="fa fa-chain-broken fa-2x"></i>Yorumcu Listesi</a>
+                        </div>
+                    </div>
+                    <!-- /row -->
+
+                </div>
+            </div>
+        </div>
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-blue">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <i class="fa fa-users fa-4x"></i>
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0 ">{{"&nbsp;&nbsp;" + dashboard.total_admin_count}}</p>
+                            <span>Yöneticiler</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="back bg-blue">
+
+                    <!-- row -->
+                    <div class="row vertical-center-row">
+                        <div class="text-center col-md-4 col-md-offset-4">
+                            <a href="javascript:;" ui-sref="home.admin"><i class="fa fa-chain-broken fa-2x"></i>Yönetici Listesi</a>
+                        </div>
+                    </div>
+                    <!-- /row -->
+                </div>
+            </div>
+        </div>
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-slategray">
+
+                    <!-- row -->
+                    <div class="row">
+                        <!-- col -->
+                        <div class="col-xs-4">
+                            <i class="fa fa-eye fa-4x"></i>
+                        </div>
+                        <!-- /col -->
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0 ">{{"&nbsp;&nbsp;" + dashboard.interpretation_count}}</p>
+                            <span>Yorumlar</span>
+                        </div>
+                        <!-- /col -->
+                    </div>
+                    <!-- /row -->
+                </div>
+                <div class="back bg-slategray">
+                    <!-- row -->
+                    <div class="row">
+                        <!-- col -->
+                        <div class="text-center col-md-4 col-md-offset-4">
+                            <a href="javascript:;" ui-sref="home.interpretations"><i class="fa fa-chain-broken fa-2x"></i>Yorum Listesi</a>
+                        </div>
+                        <!-- /col -->
+                    </div>
+                    <!-- /row -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-warning">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <i class="fa fa-shopping-cart fa-4x"></i>
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">{{"&nbsp;&nbsp; &nbsp;" + dashboard.total_credit_spent}}</p>
+                            <span>Harcanan Kredi</span>
+                        </div>
+                        <!-- /col -->
+                    </div>
+                    <!-- /row -->
+
+                </div>
+                <div class="back bg-warning">
+                    <div class="row vertical-center-row">
+                        <div class="text-center col-md-4 col-md-offset-4">
+                            <a href="javascript:;" ui-sref="home.customer"><i class="fa fa-chain-broken fa-2x"></i>Coming Soon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-info">
+                    <!-- row -->
+                    <div class="row">
+                        <!-- col -->
+                        <div class="col-xs-4">
+                            <i class="fa fa-usd fa-4x"></i>
+                        </div>
+                        <!-- /col -->
+                        <!-- col -->
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">Yok</p>
+                            <span>Coming Soon</span>
+                        </div>
+                        <!-- /col -->
+                    </div>
+                    <!-- /row -->
+
+                </div>
+                <div class="back bg-info">
+
+                    <!-- row -->
+                    <div class="row vertical-center-row">
+                        <div class="text-center col-md-4 col-md-offset-4">
+                            <a href="javascript:;" ui-sref="home.interpreter"><i class="fa fa-chain-broken fa-2x"></i>Coming Soon</a>
+                        </div>
+                    </div>
+                    <!-- /row -->
+
+                </div>
+            </div>
+        </div>
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-success">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <i class="fa fa-slack fa-4x"></i>
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">Yok</p>
+                            <span>Coming Soon</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="back bg-success">
+
+                    <!-- row -->
+                    <div class="row vertical-center-row">
+                        <div class="text-center col-md-4 col-md-offset-4">
+                            <a href="javascript:;" ui-sref="home.admin"><i class="fa fa-chain-broken fa-2x"></i>Coming Soon</a>
+                        </div>
+                    </div>
+                    <!-- /row -->
+                </div>
+            </div>
+        </div>
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-dutch">
+
+                    <!-- row -->
+                    <div class="row">
+                        <!-- col -->
+                        <div class="col-xs-4">
+                            <i class="fa fa-dashboard fa-4x"></i>
+                        </div>
+                        <!-- /col -->
+                        <!-- col -->
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">Yok</p>
+                            <span>Coming Soon</span>
+                        </div>
+                        <!-- /col -->
+                    </div>
+                    <!-- /row -->
+
+                </div>
+                <div class="back bg-dutch">
+
+                    <!-- row -->
+                    <div class="row">
+                        <!-- col -->
+                        <div class="col-xs-4">
+                            <a href="javascript:;" ui-sref="home.interpretations"><i class="fa fa-cog fa-2x"></i> Coming Soon</a>
+                        </div>
+                        <!-- /col -->
+                        <!-- col -->
+                        <div class="col-xs-4">
+                            <a href="javascript:;" ui-sref="home.interpretations"><i class="fa fa-chain-broken fa-2x"></i> Coming Soon</a>
+                        </div>
+                        <!-- /col -->
+                        <!-- col -->
+                        <div class="col-xs-4">
+                            <a href="javascript:;" ui-sref="home.interpretations"><i class="fa fa-ellipsis-h fa-2x"></i> Coming Soon</a>
+                        </div>
+                        <!-- /col -->
+                    </div>
+                    <!-- /row -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

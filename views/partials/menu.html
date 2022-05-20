@@ -1,0 +1,69 @@
+
+<style>
+    ul.submenu li:hover
+    {
+        background: #3A3144;
+    }
+    @media screen and (max-width:800px) {
+        .submenu
+        {
+            display: none;
+        }
+    }
+</style>
+<div id="controls">
+    <!-- ================================================
+    ================= SIDEBAR Content ===================
+    ================================================= -->
+    <aside id="sidebar">
+        <uib-accordion-heading>
+
+            <div id="sidebar-wrap">
+
+                <div class="panel-group slim-scroll" role="tablist">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse">
+                                    Navigation <i class="fa fa-angle-down"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="sidebarNav" class="panel-collapse collapse in" role="tabpanel">
+                            <div class="panel-body">
+                                <!-- ===================================================
+                                ================= NAVIGATION Content ===================
+                                ==================================================== -->
+                                <ul id="navigation" nav-collapse ripple>
+                                    <li ng-class="{active: $state.includes('home.dashboard')}"><a ui-sref="home.dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                                    <li ng-class="{active: $state.includes('home.customer')}"><a ui-sref="home.customer"><i class="fa fa-users"></i> <span>Müşteriler</span></a></li>
+                                    <li ><a ui-sref="home.interpreter"><i class="fa fa-users"></i> <span>Yorumcular</span></a></li>
+                                    <li ><a ui-sref="home.admin"><i class="fa fa-user"></i> <span>Yöneticiler</span></a></li>
+                                    <li ><a ui-sref="home.interpretations"><i class="fa fa-comments"></i> <span>Yorumlar</span></a></li>
+                                    <li>
+                                        <a role="button" tabindex="0"><i class="glyphicon glyphicon-transfer"></i> <span>Ekonomi</span><i ></i> </a>
+                                        <ul class="submenu">
+                                            <li style="list-style: none;"><a ui-sref="home.transInterpreter"><i class="fa fa-caret-right" style=" margin:0 10px"></i>Yorumcuya Ödemeler</a></li>
+                                            <li style="list-style: none;"><a ui-sref="home.transCustomer"><i class="fa fa-caret-right" style="margin:10px"></i>Satın Alımlar</a></li>
+                                        </ul>
+                                    </li>
+                                    <li ><a role="button"><i class="fa fa-cog"></i> <span>Ayarlar</span></a>
+                                        <ul class="submenu">
+                                            <li style="list-style: none;"><a ui-sref="home.creditSettings"><i class="fa fa-usd" style=" margin:0 10px"></i>Kredi Değerleri</a></li>
+                                            <li style="list-style: none;"><a ui-sref="home.creditPackages"><i class="fa fa-usd" style=" margin:0 10px"></i>Kredi Paketleri</a></li>
+                                            <li style="list-style: none;"><a ui-sref="home.interpretationsSetting"><i class="fa fa-cog" style="margin:10px"></i>Yorum Türleri</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <!--/ NAVIGATION Content -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+    </aside>
+    <!--/ SIDEBAR Content -->
+</div>

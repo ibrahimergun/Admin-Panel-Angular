@@ -1,0 +1,62 @@
+<div class="page page-users" ng-controller="newInterpreter">
+
+    <div class="pageheader">
+
+        <h2>Yorumcu Ekleme Ekranı</h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="/"><i class="fa fa-home"></i> ArifName</a>
+                </li>
+                <li>
+                    <a>Yorumcu Ekle</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- tile -->
+            <section class="tile tile-simple">
+
+                <!-- tile body -->
+                <div class="tile-body">
+                    <form name="frm" class="form-horizontal form-validation" novalidate>
+                        <div class="form-group mt-20">
+                            <label for="first_name" class="col-sm-2 control-label">First Name</label>
+                            <div class="col-sm-6 offset">
+                                <input type="text" ng-model="interpreter.first_name" name="first_name" class="form-control" id="first_name" required>
+                            </div>
+                        </div>
+                        <div class="form-group mt-20">
+                            <label for="last_name" class="col-sm-2 control-label">Last Name</label>
+                            <div class="col-sm-6 offset">
+                                <input type="text" ng-model="interpreter.last_name" name="last_name" class="form-control" id="last_name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Email <span class="text-danger" style="font-size: 15px;">*</span></label>
+                            <div class="col-sm-6">
+                                <input type="email" ng-model="interpreter.email" name="email" class="form-control" id="email" required>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-footer" style="padding: 0 100px;">
+                            <button class="btn btn-success b-0 pull-right" ng-disabled="frm.$invalid" ng-click="addInterpreter()">Submit</button>
+                            <a class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" href="#!/home/interpreter"><i class="fa fa-arrow-left"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+                <!-- /tile body -->
+
+            </section>
+            <!-- /tile -->
+        </div>
+    </div>
+    <!-- /row -->
+</div>
+
+
